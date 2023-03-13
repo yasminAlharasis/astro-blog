@@ -1,0 +1,15 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { marked } from 'marked';
+const response = await fetch('https://firebasestorage.googleapis.com/v0/b/apn-pay-dev.appspot.com/o/markdown-sample.md?alt=media&token=71ec43f1-4626-4551-89d0-038548cc4469');
+const markdown = await response.text();
+const content = marked.parse(markdown);
+
+---
+
+<MainLayout title='about' description="My about Page">
+    <article set:html={content} />
+</MainLayout>
+<style >
+    h1 {color:blue}
+</style>

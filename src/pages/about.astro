@@ -1,0 +1,15 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { marked } from 'marked';
+const response = await fetch('https://raw.githubusercontent.com/wiki/adam-p/markdown-here/Markdown-Cheatsheet.md');
+const markdown = await response.text();
+const content = marked.parse(markdown);
+
+---
+
+<MainLayout title='about' description="My about Page">
+    <article set:html={content} />
+</MainLayout>
+<style >
+    h1 {color:blue}
+</style>

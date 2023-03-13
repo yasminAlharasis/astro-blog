@@ -1,0 +1,23 @@
+---
+import Nav from '../components/Nav.vue';
+import MainHead from './MainHead.astro';
+
+
+interface Props{
+    title?: string,
+    description?: string
+}
+const { title = "Default Title",description="Default description" } = Astro.props as Props;
+---
+
+
+<html lang="en">
+	<MainHead {title} {description}></MainHead>
+	<body>
+		<!-- <slot>{Astro.props.title}</slot> -->
+		<!-- <main><slot name="text"> Text</slot></main> -->
+        <Nav></Nav>
+		<main><slot>Default Text</slot></main>
+
+	</body>
+</html>
